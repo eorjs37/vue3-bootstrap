@@ -1,18 +1,15 @@
 <template>
   <NavBar />
-  <Application/>
+  <div id="notification"></div>
+  <router-view></router-view>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
-import ProfileVue from './components/Profile.vue';
-import Application from './components/Application.vue';
+import NavBar from './components/NavBar.vue';
 export default {
   name: 'App',
   components: {
     NavBar,
-    ProfileVue,
-    Application
   }
 }
 </script>
