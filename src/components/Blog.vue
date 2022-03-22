@@ -47,7 +47,7 @@
             From the Firehose
         </h3>
 
-        <article class="blog-post" v-for="article in posts" :key="article.id">
+        <article class="blog-post" v-for="article in posts" :key="article.id" :id="'article' + article.id">
           <h2 class="blog-post-title">{{ article.title }}</h2>
           <p class="blog-post-meta">{{ article.date }}</p>
           <div v-html="article.post"></div>
@@ -70,17 +70,17 @@
             </div>
 
             <div class="p-4">
-                <h4 class="fst-italic">Archives</h4>
+                <h4 class="font-italic">Archives</h4>
                 <ol class="list-unstyled mb-0">
                     <li v-for="(archive, index) in archives" :key="index">
-                        <a href="#" data-toggle="collapse" :data-target="'#archive-'+index">
+                        <a  data-toggle="collapse" :href="'#archive-'+index" :data-target="'archive-'+index" aria-expanded="true" :aria-controls="'archive-'+index">
                             {{ archive.key }}
                         </a>
-                        <div class="collapse" :id="'archive-'+index">
-                            <ol class="list-unstyled ms-3">
-                                <li v-for="post in archive.posts" :key="post.id">
+                        <div class="collapsed" :id="'archive-'+index">
+                            <ol class="list-unstyled ms-3" v-for="post in archive.posts" :key="post.id">
+                                <li>
                                     {{ post.date.substring(0,10) + ': '}}
-                                    <a :href="'#article-'+post.id" @click="onArchive($event,post.id)">
+                                    <a :href="'#article' + post.id" @click="onArchive($event, post.id)">
                                         {{ post.title.substring(0,20) }}
                                     </a>
                                 </li>
