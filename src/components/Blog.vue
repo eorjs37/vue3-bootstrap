@@ -47,10 +47,11 @@
             From the Firehose
         </h3>
 
-        <article class="blog-post" v-for="article in posts" :key="article.id" :id="'article' + article.id">
+        <article class="blog-post" v-for="article in posts" :key="article .id" :id="'article' + article.id">
           <h2 class="blog-post-title">{{ article.title }}</h2>
           <p class="blog-post-meta">{{ article.date }}</p>
-          <div v-html="article.post"></div>
+          <div v-if="article.type =='html'" v-html="article.post"></div>
+          <markdown v-else-if="article.type =='md'" id="md" :source="article.post"/>
         </article>
 
 
@@ -106,6 +107,7 @@
 
 <script>
 import { reactive, onMounted, ref, computed } from "vue";
+import Markdown from 'vue3-markdown-it';
 import useAxios from '/@app_modules/axios.js';
 export default {
     setup(){
@@ -162,6 +164,7 @@ export default {
             onArchive
         }
     },
+    components: { Markdown }
 }
 </script>
 

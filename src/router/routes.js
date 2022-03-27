@@ -2,6 +2,7 @@ import Home from '/@components/Home.vue';
 import Profile from '/@components/Profile.vue';
 import Application from '/@components/Application.vue';
 import Admin from '/@components/Admin.vue';
+import Edit from '/@components/Edit.vue';
 import NotFound from '/@components/NotFound.vue';
 
 const routes = [
@@ -10,6 +11,7 @@ const routes = [
     { path: '/profile', name: 'profile', component: Profile},
     { path: '/application', name: 'application', component: Application },
     { path: '/admin', name: 'admin', component: Admin },
+    { path: '/edit', name: 'edit', component: Edit },
     { path: '/:pathMatch(.*)*', component: NotFound },
 ]
 
